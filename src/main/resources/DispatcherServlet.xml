@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:mvc="http://www.springframework.org/schema/mvc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+        
+  <mvc:annotation-driven conversion-service="conversionService">
+
+    <mvc:argument-resolvers>
+      <bean class="com.cnhutong.cs.mobile.web.resolver.SecureArgumentResolver" />
+      <bean class="com.cnhutong.cs.mobile.web.util.PageArgumentResolver">
+        <constructor-arg value="false" />
+        <property name="everyPage" value="#{config['page.everyPage']}" />
+      </bean>
+      <bean class="com.cnhutong.cs.mobile.web.util.RequestBodyParamArgumentResolver">
+        <constructor-arg index="0">
+          <list>
+            <ref bean="fastJsonHttpMessageConverter"/>
+          </list>
+        </constructor-arg>
+        <constructor-arg index="1" ref="conversionService" />
+      </bean>
+    </mvc:argument-resolvers>
+
+    <mvc:message-converters>
+      <bean class="com.cnhutong.cs.mobile.converter.UTF8StringHttpMessageConverter" />
+      <ref bean="fastJsonHttpMessageConverter"/>
+    </mvc:message-converters>
+  </mvc:annotation-driven>
+
+  <mvc:interceptors>
+    <bean class="com.cnhutong.cs.mobile.web.interceptor.HttpAuthenticationInterceptor">
+    </bean>
+  </mvc:interceptors>
+
+  <bean id="fastJsonHttpMessageConverter" class="com.cnhutong.cs.mobile.web.util.ExtendedFastJsonHttpMessageConverter4">
+  	<property name="serializerFeatures">
+      <list>
+        <value>WriteMapNullValue</value>
+      </list>
+    </property>
+  </bean>
+  <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+  <context:component-scan base-package="com.cnhutong.cs.mobile.web.controller"></context:component-scan>
+    
+  <!-- Handles HTTP GET requests for /resource/** by efficiently serving up static resources in the ${webapp}/static/ directory -->
+  <mvc:resources mapping="/resource/**" location="/resource/" />
+
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
+  </bean>
+
+</beans>
