@@ -3,7 +3,6 @@
  */
 package com.zzl.web.util;
 
-import com.cnhutong.cs.mobile.web.util.DecimalFormat;
 import org.springframework.format.AnnotationFormatterFactory;
 import org.springframework.format.Parser;
 import org.springframework.format.Printer;

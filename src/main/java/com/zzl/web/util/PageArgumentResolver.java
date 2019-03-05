@@ -3,7 +3,6 @@
  */
 package com.zzl.web.util;
 
-import com.cnhutong.cs.mobile.web.util.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -21,7 +20,7 @@ import javax.servlet.ServletRequest;
  */
 public class PageArgumentResolver extends ModelAttributeMethodProcessor {
 
-    private int everyPage = com.cnhutong.cs.mobile.web.util.Page.DEFAULT_EVERY_PAGE;
+    private int everyPage = Page.DEFAULT_EVERY_PAGE;
     
     /**
      * @param annotationNotRequired
@@ -41,7 +40,7 @@ public class PageArgumentResolver extends ModelAttributeMethodProcessor {
      * @see org.springframework.web.method.annotation.ModelAttributeMethodProcessor#supportsParameter(org.springframework.core.MethodParameter)
      */
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(com.cnhutong.cs.mobile.web.util.Page.class);
+        return parameter.getParameterType().isAssignableFrom(Page.class);
     }
     
     /* (non-Javadoc)
@@ -57,7 +56,7 @@ public class PageArgumentResolver extends ModelAttributeMethodProcessor {
         int perPage = StringUtils.isBlank(request.getParameter("per_page")) ?
                 everyPage : Integer.valueOf(request.getParameter("per_page")).intValue();
         
-        com.cnhutong.cs.mobile.web.util.Page page = new Page(Integer.valueOf(currentPage).intValue(), perPage);
+        Page page = new Page(Integer.valueOf(currentPage).intValue(), perPage);
         return page;
     }
     
