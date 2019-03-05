@@ -9,7 +9,7 @@
   </appender>
 
   <!-- project default level -->
-  <logger name="com.cnhutong" level="INFO" />
+  <logger name="com.zzl" level="INFO" />
   <logger name="org.springframework.jdbc.core" level="INFO" />
   <!-- root -->
   <root level="INFO">

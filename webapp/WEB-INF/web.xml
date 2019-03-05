@@ -8,7 +8,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-        	classpath*:/context/applicationContext-*.xml
+        	classpath*:/context/spring-*.xml
         </param-value>
     </context-param>
 
@@ -67,7 +67,7 @@
 
      <!--<filter>-->
         <!--<filter-name>logFilter</filter-name>-->
-        <!--<filter-class>com.cnhutong.cs.mobile.web.interceptor.LoggingFilter</filter-class>-->
+        <!--<filter-class>com.zzl.web.interceptor.LoggingFilter</filter-class>-->
     <!--</filter>-->
     <!---->
     <!--<filter-mapping>-->
