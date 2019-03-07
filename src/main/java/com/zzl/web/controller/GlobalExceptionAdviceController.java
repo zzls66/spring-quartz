@@ -31,9 +31,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
-/**
- * @author Wilson
- */
+
 @ControllerAdvice
 public class GlobalExceptionAdviceController {
 
