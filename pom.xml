@@ -31,7 +31,7 @@
         <jedis.version>2.8.1</jedis.version>
         <spring-data-redis.version>1.7.1.RELEASE</spring-data-redis.version>
         <jxls.version>1.0.6</jxls.version>
-        <fastjson.version>1.2.17</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <hashids.version>1.0.1</hashids.version>
         <javaxmail.version>1.4.7</javaxmail.version>
         <javaxactivation.version>1.1.1</javaxactivation.version>
